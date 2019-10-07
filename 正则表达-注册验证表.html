@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户注册表验证</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        /* 内容区 */
+        .content{
+            width: 1200px;
+            height: 740px;
+            margin: 100px auto;
+        }
+        /* 标题区 */
+        .title{
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            background-color: #3092d1;
+        }
+        .title h2{
+            margin: 0;
+            text-indent: 20px;
+            font-size: 20px;
+            font-weight: lighter;
+            color: #fff;
+        }
+        /* 注册区 */
+        .register{
+            width: 100%;
+            height: 700px;
+            background-color: #ededee; 
+            float: left;   
+            /* 浮动是为了紧贴标题 */
+        }
+        .register-form{
+            margin: 100px auto;
+            width: 800px;
+            position: relative;
+        }
+        /* 这几步微调很关键 */
+        .register-form table{
+            margin-left: 150px;
+        }
+        .register-form table tr{
+            height: 50px;
+        }
+        .register-form table tr td{
+            text-indent: 10px;
+        }
+        /* 这几步微调很关键 */
+        .register-form table tr td:first-child{
+            text-align: right;
+        }
+        .register-form table tr td span{
+            color: red;
+        }
+        .register-form table tr td select{
+            width: 170px;
+            height: 20px;
+        }
+        .submit{
+            width: 80px;
+            height: 40px;
+            margin-top: 50px;
+            position: absolute;
+            left: 50%;
+            margin-left: -80px;
+            border: 1px solid #000;
+            border-radius: 5px;
+            background-color: #2375ba;
+            color: #fff;
+            text-align: center;
+            line-height: 40px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- 内容区 -->
+	<div class="content">
+        <!-- 标题区 -->
+        <div class="title"><h2>用户注册</h2></div>
+        <!-- 用户注册区 -->
+        <div class="register">
+        <!-- 用户注册表 -->
+        <!-- 记得没上传数据到服务器以前，form标签的action和a标签的href后面一定要跟#或者JavaScript:;阻止默认行为 -->
+            <form action="#" method="POST" class="register-form">
+                <!-- <p><b>用户名：</b><input type="text"><span></span></p>
+                <p><b>登录密码：</b><input type="password"><span></span></p>
+                <p><b>确认密码：</b><input type="password"><span></span></p>
+                <p><b>姓名：</b><input type="text"><span></span></p>
+                 <p><b>性别：</b>
+                    <select>
+                        <option>男</option>
+                        <option>女</option>
+                    </select>
+                    <span></span>
+                </p> 
+                <p><b>身份证号码：</b><input type="text"><span></span></p>
+                <p><b>邮箱：</b><input type="text"><span></span></p>
+                <p><b>手机号码：</b><input type="text"><span></span></p> -->
+                <table>
+                    <tr>
+                        <td>用户名：</td>
+                        <!-- 用户名是6-20位字母、数字或“_”,字母开头 -->
+                        <td><input type="text" title="^[a-zA-Z][\w_]{5,19}$"></td>
+                        <td><span ></span></td>
+                    </tr>
+                    <tr>
+                        <td>登录密码：</td>
+                        <!-- 密码6-18位，包括数字字母或符号，中间不能有空格 -->
+                        <td><input type="password" title="^\S{6,18}$"></td>
+                        <td><span></span></td>
+                    </tr>
+                    <tr>
+                        <td>确认密码：</td>
+                        <td><input type="password" title=""></td>
+                        <td><span></span></td>
+                    </tr>
+                    <tr>
+                        <td>姓名：</td>
+                        <!-- 两位到四位的中文汉字 -->
+                        <td><input type="text" title="^[\u4e00-\u9fa5]{2,4}$"></td>
+                        <td><span></span></td>
+                    </tr>
+                    <tr>
+                        <td>性别：</td>
+                        <!-- 微调 -->
+                        <td colspan="2">
+                            <select>
+                                <option value="man">男</option>
+                                <option value="woman">女</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>身份证号码：</td>
+                        <!-- 要求15位或者18位的数字，18位时最后一位可能是x -->
+                <!-- (?:) ?是非贪婪，:是不获取匹配的值,加()组合在一起是或的简写-->
+                        <td><input type="text" title="^(?:\d{15}|\d{18}|\d{17}x)$"></td>
+                        <td><span></span></td>
+                    </tr>
+                    <tr>
+                        <td>邮箱：</td>
+                        <!-- 邮箱的格式大概分为这么几种，12323@qq.com、lulu_s@open.com、lu_lu_z@qq.com.cn等 -->
+                        <td><input type="text" title="^(?:\w+\.)*\w+@(?:\w+\.)+[a-z]+$"></td>
+                        <td><span></span></td>
+                    </tr>
+                    <tr>
+                        <td>手机号码：</td>
+                        <!-- 验证手机号码 -->
+                        <td><input type="text" title="^1[3458][0-9][\d]{8}$"></td>
+                        <td><span></span></td>
+                    </tr>
+                </table>
+                <input type="submit" class="submit">
+            </form>
+        </div>
+    </div>
+</body>
+<script>
+    var inputs = document.querySelectorAll('input');
+    var spans = document.querySelectorAll('span');
+    var content = [
+        "6-20位字母、数字或“_”,字母开头",
+        "6-18位，包括数字字母或符号，中间不能有空格",
+        "请输入相同的密码",
+        "真姓名，两位到四位的中文汉字",
+        "15位或者18位的数字，18位时最后一位可能是x",
+        "请输入正确的邮箱地址",
+        "请输入正确的手机号码"
+        ];
+    var pattern = new RegExp(),
+        sum = 0;
+        // console.log(pattern)
+    // 如何传inputs、spans、content这3个数组
+    // function patternExecInputs(arr, idx){
+    //     pattern.exec(inputs[idx].value)?spans[idx].innerHTML = 'OK':spans[idx].innerHTML = content[idx];
+    // }
+    //对每一项input的正则验证，并输出验证结果
+    inputs[0].onblur = function(){
+        pattern = new RegExp(inputs[0].title);
+        // if(pattern.exec(inputs[0].value)){
+        //     spans[0].innerHTML = 'OK';
+        // }else{
+        //     spans[0].innerHTML = content[0];
+        // }
+        console.log(pattern)
+        console.log(inputs[0].value)
+        console.log(pattern.exec(inputs[0].value))
+        pattern.exec(inputs[0].value)?spans[0].innerHTML = 'OK':spans[0].innerHTML = content[0];
+    };
+    // console.log(pattern) pattern是全局变量，在函数里面赋值的pattern是局部变量 
+    inputs[1].onblur = function(){
+        pattern = new RegExp(inputs[1].title);
+        pattern.exec(inputs[1].value)? spans[1].innerHTML = 'OK': spans[1].innerHTML = content[1];
+    };
+    inputs[2].onblur = function(){
+        inputs[2].value == inputs[1].value?spans[2].innerHTML = 'OK':spans[2].innerHTML = content[2];
+    };
+    inputs[3].onblur = function(){
+        pattern = new RegExp(inputs[3].title);
+        pattern.exec(inputs[3].value)? spans[3].innerHTML = 'OK':spans[3].innerHTML = content[3];
+    };
+    inputs[4].onblur = function(){
+        pattern = new RegExp(inputs[4].title);
+        pattern.exec(inputs[4].value)?spans[4].innerHTML = 'OK':spans[4].innerHTML = content[4];
+    };
+    inputs[5].onblur = function(){
+        pattern = new RegExp(inputs[5].title);
+        pattern.exec(inputs[5].value)?spans[5].innerHTML = 'OK':spans[5].innerHTML = content[5];
+    };
+    inputs[6].onblur = function(){
+        pattern = new RegExp(inputs[6].title);
+        pattern.exec(inputs[6].value)?spans[6].innerHTML = 'OK':spans[6].innerHTML = content[6];
+    };
+    inputs[7].onclick = function(){ 
+        for(var i = 0;i < spans.length;i++){
+            if(spans[i].innerHTML != 'OK'){
+                spans[i].innerHTML = content[i];
+                event.preventDefault();  //阻止默认事件发生，这里是post提交表单跳页
+            }else{
+                sum++;
+            }
+        }
+        sum == 7?alert('验证成功'):alert('验证失败');
+    }
+    // 对每一项input的正则验证函数封装该怎么写，我下面尝试了两种办法都不行，能教一下吗？
+    // for(var i = 0;i < inputs.length;i++){
+    //     inputs[i].onblur = function(){
+    //         for(var j = 0;j < inputs.length;j++){
+    //             console.log(j)
+    //             pattern = new RegExp(inputs[j].title);
+    //             pattern.exec(inputs[j].value)?spans[j].innerHTML = 'OK':spans[j].innerHTML = content[j];
+    //         }
+    //     };
+    // }
+    // function regExp(elem, idx){
+    //     pattern = new RegExp(inputs[idx].title);
+    //     inputs[idx].onblur = function(){
+    //         for(var i = 0;i < spans.length;i++){
+    //             spans[i].innerHTML = '';
+    //             if(i == idx){
+    //                 pattern.test(inputs[idx].value);
+    //                 spans[i].innerHTML = 'ok';
+    //                 break;
+    //             }else{
+    //                 spans[i].innerHTML = content[i];
+    //             }
+    //         }
+    //     }
+    // }
+    // for(var i = 0;i < inputs.length;i++){
+    //     regExp(inputs,i);
+    // }
+
+    // 作者：NorbertNayman
+    // 链接：https://www.zhihu.com/question/348670247/answer/842860129
+    //这些验证有关的信息一般可能来自 别的模块 或者 AJAX请求
+    // 把父元素container所有的子元素事件委托给父元素处理，用addEventListenerDOM2级事件进行监听
+    // const validationList = [
+    //     {
+    //         name: 'username',
+    //         pattern: /正则表达式/,
+    //         content: '6-20位字母、数字或“_”,字母开头'
+    //     },
+    //     {
+    //         name: 'password',
+    //         pattern: /正则表达式/,
+    //         content: '6-18位，包括数字字母或符号，中间不能有空格'
+    //     },
+    //     {
+    //         name: 'check_password',
+    //         pattern: /正则表达式/,
+    //         content: '请输入相同的密码'
+    //     },
+    //     {
+    //         name: 'fullname',
+    //         pattern: /正则表达式/,
+    //         content: '真姓名，两位到四位的中文汉字'
+    //     },
+    //     {
+    //         name: 'id_number',
+    //         pattern: /正则表达式/,
+    //         content: '5位或者18位的数字，18位时最后一位可能是x'
+    //     },
+    //     {
+    //         name: 'mail',
+    //         pattern: /正则表达式/,
+    //         content: '请输入正确的邮箱地址'
+    //     },
+    //     {
+    //         name: 'phone_number',
+    //         pattern: /正则表达式/,
+    //         content: '请输入正确的手机号码'
+    //     }
+    // ]
+
+    // const container = document.querySelector('form#form_container') //获取包装元素 用于事件委托
+    // const passwordElement = document.querySelector('[name=password]') //用户密码
+    // const checkPasswordElement = document.querySelector('[name=check_password]') //确认密码
+    // const checkPasswordHintEl = document.querySelector('span.checkpwd_hint') //确认密码的提示信息 span
+    // const inputs = document.querySelectorAll('input.user_input')
+    // const spans = document.querySelectorAll('span.hint')
+
+    // passwordElement.addEventListener('change', () => {
+    //     //如果用户密码修改 清空 确认密码 清空提示span
+    //     checkPasswordElement.value = ''
+    //     checkPasswordHintEl.innerText = ''
+    // })
+
+    // //事件代理
+    // container.addEventListener('focusout', event => {
+    //     event.stopPropagation() //阻止冒泡
+    //     const { value, name } = event.target
+
+    //     validationList.forEach((item, index) => {
+    //         //处理边界
+    //         if (item.name !== name) {
+    //             return
+    //         }
+
+    //         //处理边界
+    //         if (item.name === 'check_password') {
+    //             const passwordValue = passwordElement.value
+    //             value === passwordValue
+    //                 ? (spans[index].innerText = 'OK')
+    //                 : (spans[index].innerText = item.content)
+    //             return
+    //         }
+
+    //         item.pattern.exec(value)
+    //             ? (spans[index].innerText = 'OK')
+    //             : (spans[index].innerText = item.content)
+    //     })
+    // })
+
+    // container.addEventListener('submit', event => {
+    //     event.preventDefault() //阻止默认跳页
+    //     let sum = 0
+    //     spans.forEach((item,index) => {
+    //         spans[index].innerText === 'OK' && sum++
+    //     })
+    //     sum === spans.length ? alert('验证成功') : alert('验证失败')
+    // })
+    // 1、重复的事件绑定可以用事件委托替/2、不要把正则写进HTML  做到视图与数据、逻辑的分/3、尽可能使用 forEach 和 map替代 for 循环，以提高代码可读/4、如果可以只用 if 处理边界问题，就不要使用 else，理由同/5、9102 年了，请抛弃 var 关键词，用 const 和 let 替/6、除了 something == null 以外的情况，全部使用 ==/7、请不要写封/8、尽量少地操作、访问 DOM，以提高性能，所以你可以继续优化一下上面的代码
+
+    </script>
+    </html>

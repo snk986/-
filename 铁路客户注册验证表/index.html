@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>铁路客服服务注册验证</title>
+    <link rel="stylesheet" href="css/index.css" type="text/css" /><!-- 引用css样式表，记住格式 -->
+</head>
+
+<body>
+    <!-- 头部 -->
+    <header class="header">
+        <!-- 头部容器 -->
+        <div class="header-container">
+            <div class="header-container-left">
+                <div class="header-container-left-logo"></div>
+                <!-- <div class="header-container-left-title"> -->
+                <span>慕课高铁客服中心&nbsp;|&nbsp;</span><a href="#" class="gray">客服服务</a>
+                <!-- </div> -->
+            </div>
+            <div class="header-container-right">
+                <div class="header-container-right-title">
+                    <a href="#">意见反馈&nbsp;imooc@com</a>
+                    &nbsp;&nbsp;您好，请&nbsp;<a href="#" class="loign">登录</a>&nbsp;<b>|</b>&nbsp;<a href="#"
+                        class="loign">注册</a>&nbsp;&nbsp;
+                    <a href="#">
+                        <span id="showSelect">我的IMOOC</span>
+                    </a>
+                    <div class="header-container-right-title_border"></div>
+                    <!-- <select name="" id="" class="header-container-right-title-select">
+                            <option value="">未完成订单</option>
+                            <option value="">已完成订单（改/退）</option>
+                            <option value="">我的保险</option>
+                            <option value="">查看个人信息</option>
+                            <option value="">账户安全</option>
+                            <option value="">常用联系人</option>
+                            <option value="">重点旅客预约</option>
+                            <option value="">遗失物品查找</option>
+                            <option value="">服务查询</option>
+                            <option value="">投诉</option>
+                            <option value="">建议</option>
+                        </select> -->
+                    <ul class="header-container-right-title-select" id="select">
+                        <li><a href="#">未完成订单</a></li>
+                        <li><a href="#">已完成订单（改/退）</a></li>
+                        <li><a href="#">我的保险</a></li>
+                        <li><a href="#">查看个人信息</a></li>
+                        <li><a href="#">账户安全</a></li>
+                        <li><a href="#">常用联系人</a></li>
+                        <li><a href="#">重点旅客预约</a></li>
+                        <li><a href="#">遗失物品查找</a></li>
+                        <li><a href="#">服务查询</a></li>
+                        <li><a href="#">投诉</a></li>
+                        <li><a href="#">建议</a></li>
+                    </ul>
+                    <a href="#" class="header-container-right-title-phone">手机版</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- 主题区 -->
+    <article class="content">
+        <p class="content-title">您现在的位置：<span class="gray">客运首页>注册</span></p>
+        <div class="content-container">
+            <p class="content-container-title">账户信息</p>
+            <div class="content-container-loign">
+                <!-- method="post" 中还不能填写post，否则会把数据提交上去，导致验证失败的正则数据丢失 -->
+                <form action="#" method="post" class="content-container-loign_reg" id='skipPage'>
+                    <table>
+                        <tr>
+                            <td>*</td>
+                            <td>用&nbsp;户&nbsp;名：</td>
+                            <td>
+                                <input type="text" placeholder="用户名设置成功后不可修改" id="username"></td>
+                            <td><span class="showRlue orange">6-30位字母、数字或“_”,字母开头</span></td>
+                        </tr>
+                        <tr>
+                            <td>*</td>
+                            <td>登录密码：</td>
+                            <td><input type="password" placeholder="6-20位数字、字母或符号" id="password"></td>
+                            <td>
+                                <!-- showRlue  删除的-->
+                                <div class="spanChange">  
+                                    <div class="spanChangeBlock"></div>
+                                    <div class="spanChangeBlock"></div>
+                                    <div class="spanChangeBlock"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4" id="hidden">
+                                <span class="showRlue" ></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>*</td>
+                            <td>确认密码：</td>
+                            <td><input type="password" placeholder="再次输入密码" id="confirmPassword"></td>
+                            <td><span class="showRlue"></span></td>
+                        </tr>
+                        <tr>
+                            <td>*</td>
+                            <td>姓&nbsp;&nbsp;&nbsp;&nbsp;名：</td>
+                            <td><input type="text" placeholder="请输入姓名" id="fullName"></td>
+                            <td>
+                                <span class="showRlue" id="showNamerlue">
+                                    <a href="#" class="orange">姓名填写规则</a>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>*</td>
+                            <td>证件类型：</td>
+                            <td colspan="2">
+                                <select>
+                                    <option value="">二代身份证</option>
+                                    <option value="">港澳通行证</option>
+                                    <option value="">台湾通行证</option>
+                                    <option value="">护照</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>*</td>
+                            <td>证件号码：</td>
+                            <td><input type="text" placeholder="请输入您的证件号码" id="cardId"></td>
+                            <td><span class="showRlue"></span></td>
+                        </tr>
+                        <tr>
+                            <td>*</td>
+                            <td>邮&nbsp;&nbsp;&nbsp;&nbsp;箱：</td>
+                            <td><input type="text" placeholder="请正确填写邮箱地址" id="email">
+                            </td>
+                            <td><span class="showRlue"></span></td>
+                        </tr>
+                        <tr>
+                            <td>*</td>
+                            <td>手机号码：</td>
+                            <td><input type="text" placeholder="请输入您的手机号码" id="phoneNumber"></td>
+                            <td><span class="showRlue orange">请填写正确的手机号码，售后将向该手机发送验证码</span></td>
+                        </tr>
+                        <tr>
+                            <td>*</td>
+                            <td>旅客类型：</td>
+                            <td colspan="2">
+                                <select>
+                                    <option value="">成人</option>
+                                    <option value="">儿童</option>
+                                    <option value="">学生</option>
+                                    <option value="">老人</option>
+                                    <option value="">残疾军人</option>
+                                    <option value="">伤残人民警察</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td colspan="2">
+                                <input type="checkbox" name="" id="" class="last">我已同意并遵守
+                                <a href="#">《中国铁路客服中心网站服务条款》</a>
+                            </td>
+                        </tr>
+                    </table>
+                    <input type="submit" class="content-container-loign_submit" value="下一步" id="next">
+                </form>
+                <div class="content-container-loign_namerlue" id="Namerlue">
+                    <p>1.确认姓名中生僻字无法输入时，可用生僻字拼音或同音字替代。</p>
+                    <p>2.输入姓名保存后，遇有系统无法正确显示的汉字，可用该汉字的拼音或同音字重新修改后保存。</p>
+                    <p>3.姓名中有繁体字无法输入时，可用简体替代。</p>
+                    <p>4.姓名较长，汉字与英文字符合计超过30个（1个汉字算2个字符）的，需按姓名中第一个汉字或英文字符开始按顺序连续输入30个字符（空格字符不输入），其中英文字符输入时不区别大小写</p>
+                </div>
+            </div>
+        </div>
+    </article>
+    <!-- 底部 -->
+    <footer class="footer">
+        <div class="footer-container">
+            <p><a href="#" class="gray">关于我们</a>&nbsp;|&nbsp;<a href="#" class="gray">网站声明</a></p>
+            <p class="gray">
+                Copyright&nbsp;&copy;&nbsp;2017&nbsp;imooc.com&nbsp;All&nbsp;Rights&nbsp;Resrved|京JCP备&nbsp;13046642号-2
+            </p>
+        </div>
+    </footer>
+    <!-- <script type="text/javascript" src="js/index.js"></script> -->
+    <script type="text/javascript" src="js/index2.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>CSS布局</title>
+    <link rel="stylesheet" href="../index.css/style2.css" type="text/css" /><!-- 引用css样式表，记住格式 -->
+</head>
+
+<body>
+    <!-- 此处写代码 -->
+    <div class="header">
+        <!-- 顶部区 -->
+        <div class="logo"> <!-- logo图 -->
+            <a href="#"><img src="../images/logo.png" /></a>
+        </div>
+        <div class="nav"><!-- 导航区 -->
+            <ul>
+                <li><a href="#">HOME</a></li>
+                <li><a href="#">ABOUT</a></li>
+                <li><a href="#">GALLERY</a></li>
+                <li><a href="#">FACULTY</a></li>
+                <li><a href="#">EVENTS</a></li>
+                <li><a href="#">CONTACT</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="content"><!-- 主题区 -->
+        <div class="banner"><!-- banner图 -->
+            <div class="banimg">
+                <img src="../images/banner3.jpg" />
+            </div>
+            <div class="imgLayer"><!-- 遮罩层 -->
+                <div class="banuser"><!-- 遮罩层上面的form标签 -->
+                    <form action="#" method="GET">
+                        <input type="text" name="user" value="    your Name" />
+                        <input type="text" name="user" value="    your Phone" />
+                        <input type="text" name="user" value="    your Email" />
+                        <textarea name="introduce" id="comment" cols="30"
+                            rows="10">    write Your Comment Here</textarea>
+                        <button name="send">SEND MESSAGE</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="about"><!-- 主题区中的about区 -->
+            <div class="abtop"><!-- about区中的上图片区 -->
+                <div class="tittle">
+                    <h1>ABOUT</h1>
+                    <div class="line"></div><!-- 标题区中的盒子划线 -->
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting
+                        industry.Lorem Ipsum has been the industry's standard dummy
+                        text ever since the 1500s.
+                    </p>
+                </div>
+                <!-- about区中的图片区 -->
+                <div class="pic">
+                    <div class="picleft"> <!-- 图片区中的左图片区-->
+                        <div class="lefth">
+                            <h2> A WORD ABOUT US</h2>
+                        </div>
+                        <div class="leftword">
+                            <p>
+                                Praesent dignissim viverra est,sed bibenddum ligula congue non.Sed ac nislet felis gravida commodo?Suspenddisse eget ullamcorper ipsum.Suspenddisse diam amet.
+                            </p>
+                            <button>EXPLORE</button>
+                        </div>
+                        <div class="wordLayer"></div> <!-- 左图片区中的遮罩层-->
+                    </div>
+                    <div class="picmiddle"> <!-- 图片区中的中间图片区-->
+                        <img src="../images/bb3.jpg" />
+                    </div>
+                    <div class="picright"> <!-- 图片区中的右盒子区-->
+                        <div class="rightbox">
+                            <p class="word1">70000</p>
+                            <div class="line"></div><!-- 右盒子区中的盒子画线-->
+                            <p class="word2">Students</p>
+                        </div>
+                        <div class="rightbox">
+                            <p class="word1">600</p>
+                            <div class="line"></div><!-- 右盒子区中的盒子画线-->
+                            <p class="word2">Faculty</p>
+                        </div>
+                    </div>
+                    <div class="clear"></div><!-- 清除图片区中3个部分的浮动-->
+                </div>
+            </div>
+            <div class="abbottom">  <!-- about区中的下图片区 -->
+                <div class="bottomone">
+                    <div class="bottomimg">
+                        <img src="../images/b1.jpg"/>
+                        <div class="border1"></div>
+                    </div>
+                    <div class="bottomword">
+                        <div class="wordcon"><!-- 下图片区中的文字盒子部分 -->
+                            <h1 class="word1">Library</h1>
+                            <p class="word2">Lorem Ipsum is simply dummy text of the
+                                printing and typesetting industry
+                            </p>
+                            <p class="word3">Lorem Ipsum has been the industry's standard      dummy text ever since the 1500s,when an unknown pronter        took a galley of type and scrambled it to make a type          specimen book.
+                            </p>
+                            <!--多行文字如何在盒子里面自动换行，不然p会撑满整行？使用br标签，是否右更好的办法？
+                            自动换行可以使用word-break:break-all;属性，记得要设置包含文字的标签（这里是p）的宽度-->
+                            <button>EXPLORE</button>
+                        </div>
+                    </div>
+                    <div class="bottomimg">
+                        <img src="../images/b2.jpg"/>
+                        <div class="border1"></div>
+                    </div>
+                    <div class="bottomword">
+                        <div class="wordcon"><!-- 下图片区中的文字盒子部分 -->
+                            <h1 class="word1">Computer Lab</h1>
+                            <p class="word2">Lorem Ipsum is simply dummy text of the
+                                printing and typesetting industry
+                            </p>
+                            <p class="word3">Lorem Ipsum has been the industry's standard      dummy text ever since the 1500s,when an unknown pronter        took a galley of type and scrambled it to make a type          specimen book.
+                            </p>
+                            <button>EXPLORE</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottomtwo">
+                    <div class="bottomword">
+                        <div class="wordcon"><!-- 下图片区中的文字盒子部分 -->
+                            <h1 class="word1">Conferenca Hall</h1>
+                            <p class="word2">Lorem Ipsum is simply dummy text of the
+                                printing and typesetting industry
+                            </p>
+                            <p class="word3">Lorem Ipsum has been the industry's standard      dummy text ever since the 1500s,when an unknown pronter        took a galley of type and scrambled it to make a type          specimen book.
+                            </p>
+                            <button>EXPLORE</button>
+                        </div>
+                    </div>
+                    <div class="bottomimg">
+                        <img src="../images/b3.jpg"/>
+                        <div class="border2"></div>
+                    </div>
+                    <div class="bottomword">
+                        <div class="wordcon"><!-- 下图片区中的文字盒子部分 -->
+                            <h1 class="word1">Play Ground</h1>
+                            <p class="word2">Lorem Ipsum is simply dummy text of the
+                                printing and typesetting industry
+                            </p>
+                            <p class="word3">Lorem Ipsum has been the industry's standard      dummy text ever since the 1500s,when an unknown pronter        took a galley of type and scrambled it to make a type          specimen book.
+                            </p>
+                            <button>EXPLORE</button>
+                        </div>
+                    </div>
+                    <div class="bottomimg">
+                        <img src="../images/b4.jpg"/>
+                        <div class="border2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="gallery"><!-- 主题区中的gallery区 -->
+            <div class="tittle">
+                <h1>GALLERY</h1>
+                <div class="line"></div><!-- gallery区tittle中的盒子画线 -->
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting
+                    industry.Lorem Ipsum has been the industry's standard dummy
+                    text ever since the 1500s.
+                </p>
+            </div>
+            <div class="pic"><!-- gallery区的下图片区，使用ul标签 -->
+                <ul>
+                    <li>
+                        <img src="../images/03-01.jpg"/>
+                        <p>SCIENCE LAB</p>
+                    </li>
+                    <li>
+                        <img src="../images/03-02.jpg"/>
+                        <p>INDOOR STADIUM</p>
+                    </li>
+                    <li>
+                        <img src="../images/03-03.jpg"/>
+                        <p>TRANSPORTATION</p>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <img src="../images/03-04.jpg"/>
+                        <p>KIDS ROOM</p>
+                    </li>
+                    <li>
+                        <img src="../images/03-05.jpg"/>
+                        <p>MEDITATION CLASSES</p>
+                    </li>
+                    <li>
+                        <img src="../images/03-06.jpg"/>
+                        <p>KIDS PLAY GROUND</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- 底部区 -->
+    <div class="footer">&copy;&nbsp;2016&nbsp;imooc.com&nbsp;京ICP备13046642号</div>
+</body>
+
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>2-5</title>
+    <style type="text/css">
+        div {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            box-sizing: border-box;
+            width: 400px;
+            height: 400px;
+            margin: auto;
+            border: 1px solid red;
+            border-bottom: 200px solid red;
+            border-radius: 50%;
+            transform-origin: 50% 50%;
+            animation-name: rotate;
+            animation-duration: 5s;
+            animation-timing-function: linear;
+            /*此处写代码*/
+            animation-iteration-count: infinite;
+        }
+
+        /* 记住代码别写错英文字母，名称最好复制 */
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        div::before {
+            display: block;
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            /* 计算高度和宽度的时候要把边框算上 */
+            bottom: -199px;
+            left: -199px;
+            box-sizing: border-box;
+            width: 199px;
+            height: 199px;
+            margin: auto;
+            border: 1px solid red;
+            background: -webkit-radial-gradient(circle, white 10%, red 10%);
+            background: -moz-radial-gradient(circle, white 10%, red 10%);
+            background: -o-radial-gradient(circle, white 10%, red 10%);
+            background: radial-gradient(circle, white 10%, red 10%);
+            border-radius: 50%;
+        }
+
+        div::after {
+            display: block;
+            content: "";
+            position: absolute;
+            top: 0;
+            right: -199px;
+            bottom: -199px;
+            left: 0px;
+            box-sizing: border-box;
+            width: 199px;
+            height: 199px;
+            margin: auto;
+            border-bottom: 1px solid red;
+            background: -webkit-radial-gradient(circle, red 10%, white 10%);
+            background: -moz-radial-gradient(circle, red 10%, white 10%);
+            background: -o-radial-gradient(circle, red 10%, white 10%);
+            background: radial-gradient(circle, red 10%, white 10%);
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+</body>
+
+</html>

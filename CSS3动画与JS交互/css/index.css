@@ -1,0 +1,446 @@
+/* 头部 */
+.head{
+    width: 100%;
+    min-width: 1200px;
+    height: 60px;
+    position: fixed;
+}
+/* logo */
+.head__logo{
+    width: 160px;
+    height: 40px;
+    font-size: 20px;
+    line-height: 40px;
+    text-indent: 50px;
+    background: url("../img/logo.png") left center no-repeat;
+    background-size: 40px 40px;
+    position: absolute;
+    margin: 10px 0 10px 10px;
+}
+.head__logo:hover{
+    cursor: pointer;
+    color: #ff0000;
+}
+/* 导航栏 */
+.head__nav{
+    height: 40px;
+    position: absolute;
+    top: 10px;
+    right: 30px;
+    text-align: center;
+}
+.head__nav-item{
+    display: block;        
+    float: left;
+    width: 56px;
+    /* margin-left: 40px; 用margin的话，滑动门移动到margin处会自动回到第一项*/
+    padding-left: 40px;
+    color: #ffffff;
+    font-size: 14px;
+    line-height: 40px;
+    /* 滚动条到第二屏时第一项和第二项a链接样式消失，因为它们两个不在1200px宽度范围内，如何解决？
+    是z-index层级的关系 */
+}
+/* 添加一个伪元素使nav-item_status_active盒子高度增大2px */
+/* .head__nav-item_status_active::after{
+    content: '';
+    display: block;
+    width: 56px;
+    height: 2px;
+    background-color: transparent;
+}*/
+.head__nav-item_status_active{
+    color: #f01400;
+}  
+.head__nav-item_custom_button{
+    width: 96px;
+    height: 40px;
+    border-radius: 5px;
+    background: rgb(240, 20, 0);  /* 和#f01400相等 */
+    /* 补偿head__nav-item中设置padding-left: 40px;的宽度 */
+    padding: 0;
+    margin-left: 40px;  
+}
+.head__nav-item_custom_button:hover{
+    background: rgb(240, 20, 0, 0.7);
+}
+
+/* 滑动门 */
+.head__nav-tip{
+    position: absolute;
+    width: 56px;
+    height: 2px;
+    margin-left: 40px;
+    background: #f01400;
+    bottom: 0;
+    left: 0; 
+    /* 移动时每一项加96px，最好用margin-left: 40px;做初始位移，不要用left做位移，left是留给JS中做滑动门用的，比较方便计算，当然也可以用left，但是在JS中记得style.left要加上40px的初始位移 */
+}
+/* 右侧导航栏 */
+.aside__nav{
+    width: 60px;
+    height: 200px;
+    position: fixed;
+    right: 0;
+    bottom: 200px;
+    background: #ffffff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    z-index: 1;   
+}
+.aside__nav__wrap{
+    margin: 25px auto 25px;
+}
+.aside__nav__wrap-item{
+    display: block;
+    width: 60px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    font-size: 14px;
+}
+.aside__nav__wrap-item > a{
+    width: 14px;
+    height: 14px;
+    color: #000000;
+}
+.aside__nav__wrap-item > a:hover{
+    color: #ff0000;
+}
+/* 第一屏 */
+.screen-1{
+    background: url("../img/sc1.jpg") no-repeat;
+    background-size: cover;
+    text-align: center;
+}
+.screen-1__wrap{
+    margin: 0 auto;
+    width: 1200px;
+    height: 640px;
+    overflow: hidden;
+}
+.screen-1__wrap__heading{
+    font-size: 40px;
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+    margin-top: 240px;
+    /* 用margin样式，设置动画时，移动幅度小，用padding样式，设置动画时，移动幅度大，因为padding也算它本身的高度和宽度 */
+}
+.screen-1__wrap__subheading{
+    font-size: 16px;
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+    margin-top: 32px;
+}
+/* 第二屏 */
+.screen-2{
+    background: url("../img/sc2.png") center bottom no-repeat;
+    background-color: #f3f5f7;
+    text-align: center; 
+}
+.screen-2__wrap{
+    margin: 0 auto;
+    width: 1200px;
+    height: 640px;
+    position: relative;
+    overflow: hidden;
+}
+.screen-2__wrap__heading{
+    font-size: 40px;
+    margin: 0;
+    padding: 0;
+    margin-top: 88px;
+    color: #07111b;
+}
+.screen-2__wrap__border{
+    border-bottom: 2px solid #ff0000;
+    width: 50px;
+    height: 0;
+    margin: 34px auto 24px;
+}
+.screen-2__wrap__subheading{
+    font-size: 16px;
+    font-weight: normal;
+    color: #07111b;
+}
+.screen-2__wrap__man{
+    width: 275px;
+    height: 380px;
+    background: url("../img/sc2-1.png")  no-repeat;
+    position: absolute;
+    left: 50%;
+    margin-left: -138px;
+    bottom: 0;
+    z-index: 1;
+}
+.screen-2__wrap__roket{
+    width: 266px;
+    height: 205px;
+    background: url("../img/sc2-2.png") no-repeat;
+    position: absolute;
+    right: 364px;
+    bottom: 95px;
+}
+/* 第三屏 这种方式不是背景图片的方式，而是重新增加一个盒子，那么宽度就不好控制在1200px范围内，跟下面的方法比，哪种个更好？*/
+/* .screen-3__image{
+    height: 640px; 
+    background: url("../img/sc3.png") no-repeat;
+    background-size: 580px 640px;
+    background-position: 200px;
+} */
+.screen-3{
+    height: 640px; 
+    background: url("../img/sc3.png") no-repeat;
+    background-size: 580px 640px;
+    background-position: 200px;
+    background-color: #2b333b;
+}
+
+.screen-3__right{
+    width: 1200px;
+    height: 640px;
+    margin: 0 auto;
+    position: relative;
+}
+.screen-3__right__wrap{
+    width: 540px;
+    position: absolute;
+    top: 230px;
+    right: 22px;
+}
+.screen-3__right__wrap__heading{
+    font-size: 36px;
+    line-height: 36px;
+    margin: 0;
+    padding: 0;
+    color: #ffffff;
+}
+.screen-3__right__wrap__border{
+    border-bottom: 2px solid #ff0000;
+    width: 50px;
+    height: 0;
+    margin: 30px 0 26px 0;
+}
+.screen-3__right__wrap__subheading{
+    font-size: 16px;
+    font-weight: normal;
+    color: #ffffff;
+}
+.screen-3__right__wrap__features{
+    width: 520px;
+    height: 64px;
+    margin-top: 160px;
+    padding-left: 20px;
+    
+}
+.screen-3__right__wrap__features__item{
+    width: 60px;
+    height: 60px;
+    border: 2px solid;
+    border-radius: 50%;
+    float: left;
+    margin-right: 36px;
+    text-align: center;
+    line-height: 60px;
+}
+
+.screen-3__right__wrap__features > div:first-child{
+    border: 2px solid #1f5975;
+    color: #108590;
+}
+.screen-3__right__wrap__features > div:nth-child(2){
+    border: 2px solid #424d76;
+    color: #6b658f;
+}
+.screen-3__right__wrap__features > div:nth-child(3){
+    border: 2px solid #6b4146;
+    color: #ca3a46;
+}
+.screen-3__right__wrap__features > div:nth-child(4){
+    border: 2px solid #29535f;
+    color: #29abe5;
+}
+.screen-3__right__wrap__features > div:nth-child(5){
+    border: 2px solid #3e4e40;
+    color: #838d3e;
+}
+/* 第四屏 */
+.screen-4{
+    height: 640px;
+    background-color: #f3f5f7;
+    text-align: center;
+}
+.screen-4__wrap{
+    margin: 0 auto;
+    width: 1200px;
+    height: 640px;
+    position: relative;
+    overflow: hidden;
+}
+.screen-4__wrap__heading{
+    font-size: 40px;
+    margin: 0;
+    padding: 0;
+    margin-top: 90px;
+    color: #07111b;
+}
+.screen-4__wrap__border{
+    border-bottom: 2px solid #ff0000;
+    width: 50px;
+    height: 0;
+    margin: 36px auto 24px;
+}
+.screen-4__wrap__subheading{
+    font-size: 16px;
+    font-weight: normal;
+    color: #07111b;
+    margin: 0;
+}
+.screen-4__wrap__bg{
+    width: 1200px;
+    height: 120px;
+    margin-top: 76px;
+}
+.screen-4__wrap__bg__item{
+    width: 164px;
+    height: 120px;
+    float: left;
+    margin-right: 164px;
+    font-size: 16px;
+    color: #07111b;
+    line-height: 16px;
+    text-align: center;
+    position: relative;
+}
+.screen-4__wrap__bg__item > p{
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: -30px;
+    margin: auto;
+}
+/* .screen-4__wrap__bg__item:first-child和.screen-4__wrap__bg > div:first-child相等 */
+.screen-4__wrap__bg__item:first-child{
+    background: url("../img/sc4-1.png") center no-repeat;
+    margin-left: 26px;
+}
+ .screen-4__wrap__bg__item:nth-child(2){
+    background: url("../img/sc4-2.png") center no-repeat;
+}
+.screen-4__wrap__bg > div:nth-child(3){
+    background: url("../img/sc4-3.png") center no-repeat;
+}
+.screen-4__wrap__bg > div:nth-child(4){
+    background: url("../img/sc4-4.png") center no-repeat;
+    margin-right: 26px;
+} 
+/* 第五屏 */
+.screen-5{
+    background: url("../img/sc5.jpg") no-repeat;
+    background-size: cover;
+    text-align: center; 
+}
+.screen-5__wrap{
+    margin: 0 auto;
+    width: 1200px;
+    height: 640px;
+    position: relative;
+}
+.screen-5__wrap__man{
+    width: 210px;
+    height: 210px;
+    background: url("../img/sc5-1.png") center no-repeat;
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    margin-left:-105px;
+}
+.screen-5__wrap__bottom{
+    width: 700px;
+    position: absolute;  
+    bottom: 160px;
+    left: 50%;
+    margin-left:-350px;
+}
+.screen-5__wrap__bottom__heading{
+    font-size: 40px;
+    line-height: 40px;
+    margin: 0;
+    padding: 0;
+    color: #ffffff;
+}
+.screen-5__wrap__bottom__border{
+    border-bottom: 2px solid #ffffff;
+    width: 50px;
+    height: 0;
+    margin: 30px auto 30px;
+}
+.screen-5__wrap__bottom__subheading{
+    font-size: 16px;
+    line-height: 16px;
+    font-weight: normal;
+    color: #ffffff;
+}
+/* 其他 */
+.orther{
+    height: 200px;
+    margin: 0;
+    padding: 0;
+    background: #ffffff;
+    position: relative;
+}
+.orther > a{
+    display: block;
+    width: 238px;
+    height: 60px;
+    position: absolute;
+    top: 70px;
+    left: 50%;
+    margin-left: -119px;
+    border: 1px solid #707070;
+    border-radius: 5px;
+    color: #14191e;
+    font-size: 20px;
+    text-align: center;
+    line-height: 60px;
+}
+.orther > a:hover{
+    color: #ff0000;
+}
+/* 页脚 */
+.footer{
+    height: 106px;
+    background: #000000;
+    text-align: center;
+    font-size: 12px;
+    position: relative;
+}
+.footer__nav{
+    width: 1200px;
+    height: 38px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto auto;
+}
+.footer__nav-item{
+    color: #ffffff;
+    margin-right: 30px;
+}
+.footer__nav > a:last-of-type{
+    margin-right: 0;
+}
+.footer__nav-copy{
+    margin: 0;
+    margin-top: 10px;
+    color: #787d82;
+    font-weight: normal;
+    line-height: 12px;
+}
+.footer__nav > a:hover{
+    color: #ff0000;
+}
+

@@ -1,0 +1,435 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+/*头部*/
+.header{   
+    width: 100%;
+    height: 80px;
+    background: #07cbc8;
+    position: fixed;
+    top: 0; 
+    /*header和footer这个属性不同，有5个属性相同，把5个属性合在一起
+    在分开写header和footer不同属性是否更好？
+    可以将header，footer相同的属性使用群组选择器写在一起，不同的再另外写*/
+    z-index: 3;
+    /*非常重要的细节，不设置的话，菜单栏下拉会导致遮罩层覆盖header*/
+}
+/*底部*/
+.footer{   
+    width: 100%;
+    height: 80px;
+    background: #07cbc9;
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+    line-height: 80px;
+    color: white;
+    z-index: 3;
+}
+/*logo区*/
+.header .logo{  
+    float: left;
+    margin-left: 160px;
+    margin-top: 16px;
+}
+/*导航区*/
+.header .nav ul{  
+    float: right;
+    line-height: 80px;
+    margin-right: 140px;
+}
+.header .nav ul li{
+    display: block;
+    float: left;
+    margin: auto 10px;  
+}
+.header .nav ul li a{
+    text-decoration: none;
+    color: white;
+}
+.header .nav ul li:hover{
+    background: #000;
+    /*这里看错题目，是li标签背景变化，而不是a标签的字体颜色*/
+}
+/*主题区*/
+.content{  
+    margin: 80px 0;
+    width: 100%;
+}
+/*banner图*/
+.banner .banimg img{
+    width: 100%;
+    height: 600px;
+}
+/*遮罩层*/
+.content .banner .imgLayer{
+    position: absolute;
+    width: 100%;
+    height: 600px;
+    opacity: 0.5;
+    top: 80px;
+    left: 0;
+    background: black;
+    z-index: 1;
+}
+/*遮罩层上面的form标签，使用居中妙计*/
+.content .banner .imgLayer .banuser{
+    position: absolute;
+    width: 513px;
+    height: 367px;
+    z-index: 2;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto auto;
+    /*居中妙计不是在父元素为相对定位下进行的？
+    top: 0; left: 0;right: 0; bottom: 0;margin: auto auto;这种居中方法，
+    一般来说使用在绝对定位中，那么它的父级可以是相对定位，也可以是绝对定位，
+    或者是固定定位，都可以作为参照物的
+    absolute绝对定位的元素的位置相对于最近的已定位祖先元素，如果元素没有已定位的祖先元素，那么它的位置相对于最初的包含块(也就是body)。*/
+}
+.content .banner .imgLayer .banuser input{
+    width: 509px;
+    height: 43px;
+    border: 2px solid gray;
+    display: block;
+    background: none;
+    color: gray;
+    margin-bottom: 15px;
+}
+.content .banner .imgLayer .banuser input:hover,
+.content .banner .imgLayer .banuser textarea:hover{
+    border-color: #07cbc9;
+}
+.content .banner .imgLayer .banuser textarea{
+    width: 509px;
+    height: 119px;
+    border: 2px solid gray;
+    display: block;
+    background: none;
+    color: gray;
+    margin-bottom: 15px;
+    font: 16px "微软雅黑";
+    text-align: left;
+}
+.content .banner .imgLayer .banuser button{
+    width: 127px;
+    height: 43px;
+    border: 2px solid gray;
+    display: block;
+    background: none;
+    color: gray;
+    margin-left: 193px;
+}
+.content .banner .imgLayer .banuser button:hover{
+    border: none;
+    background: #07cbc9;
+}
+/*主题区中的about区*/
+.content .about .abtop{
+    width: 1300px;
+    margin: 0 auto;
+}
+/*about区中的标题区*/
+.content .about .abtop .tittle{
+    text-align: center;
+    width: 550px;
+    margin: 50px auto 20px;
+    font-family: "微软雅黑";
+}
+.content .about .abtop .tittle h1{
+    font-size: 50px;
+    border-bottom: #07cbc9 2px 40px;
+}
+/*标题区中的盒子划线*/
+.content .about .abtop .tittle .line{
+    width: 40px;
+    height: 25px;
+    border-top: 2px #07cbc9 solid;
+    margin: 0 auto;
+    margin-top: 25px;
+}
+.content .about .abtop .tittle p{
+    color: gray;
+}
+/*about区中的图片区 */
+.content .about .abtop .pic{
+    width: 1200px;
+}
+/*图片区中的左图片区*/
+.content .about .abtop .pic .picleft{
+    width: 370px;
+    height: 350px;
+    left: 130px;
+    z-index: 1;/*设置这个是使左盒子在右盒子之上*/
+}
+.content .about .abtop .pic .picleft,
+.content .about .abtop .pic .picmiddle,
+.content .about .abtop .pic .picright{
+    float: left;
+    position: relative;/*设置浮动是使他们在一行，设置相对定位
+    是方便对他们进行定位*/
+}
+.content .about .abtop .pic .lefth{
+    width: 160px;
+    height: 80px;
+    text-align: center;
+    margin-left: 10px;
+}
+.content .about .abtop .pic h2{
+    font-size: 30px;
+    font-weight: 500;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+.content .about .abtop .pic .leftword{
+    border: 1px gray solid;
+    width: 368px;
+    height: 244px;
+    margin-top: 12px;    
+}
+/*左图片区中的遮罩层*/
+.content .about .abtop .pic .wordLayer{
+    width: 370px;
+    height: 246px;
+    position: absolute;
+    margin-top: -246px;
+    opacity: 0.5;
+    z-index: -1;/*把遮罩层设为负数它就在下面了*/
+    background: #ffffff;/*忘记设置背景颜色，导致遮罩层没显示出来，这细节很重要*/
+}
+/*左图片区中的遮罩层上的文字和按钮*/
+.content .about .abtop .pic .leftword p,
+.content .about .abtop .pic .leftword button{
+    margin: 20px 25px;
+}
+.content .about .abtop .pic .leftword button{
+    width: 100px;
+    height: 43px;
+    background: #000;
+    color: #ffffff;
+    border: none;
+    margin-top: 5px;
+}
+/*图片区中的中间图片区*/
+.content .about .abtop .pic .picmiddle img{
+    width: 568px;
+    height: 380px;
+}
+/*图片区中的右盒子区*/
+.content .about .abtop .pic .picright{
+    left: 30px;
+    /*这里是左移动，而不是左外边距填充，使用外边距会导致掉落一行，因为他们三个
+    设置相对定位后，用lrtb移动来控制定位，会掉落一行的原因是：设置浮动以后，他们
+    三个占满了这一行，使用外边距会把宽度撑满。*/
+}
+/*右盒子区中两个小盒子的设置*/
+.content .about .abtop .pic .picright .rightbox{
+    width: 236px;
+    height: 142px;
+    border: 1px #07cbc9 solid;
+    text-align: center;
+    display: block;
+    margin-bottom: 25px; 
+}
+.content .about .abtop .pic .picright .rightbox .word1{
+    font: 30px "微软雅黑";
+    font-weight: 600;
+    margin-top: 22px; 
+    /*如何使盒子里面的多行文字垂直居中？用计算的方法算出上下空白距离
+    然后使用外边距，是否用更好的办法？
+    1.可以将它们包含在div中，使用（2）里居中的方法实现垂直居中，
+    或者是设置top:50%,margin:负的div自身高度一半*/ 
+}
+.content .about .abtop .pic .picright .rightbox .word2{
+    font: 20px "微软雅黑";
+    font-weight: 500;
+}
+/*多行文字如何在盒子里面自动换行，不然p会撑满整行？使用br标签，是否右更好的办法？
+自动换行可以使用word-break:break-all;属性，记得要设置包含文字的标签（这里是p）的宽度*/
+
+/*右盒子区中小盒子中的盒子划线*/
+.content .about .abtop .pic .picright .rightbox .line{
+    width: 40px;
+    height: 15px;
+    border-top: 2px #07cbc9 solid;
+    margin: 0 auto;
+    margin-top: 15px;
+}
+/*清除图片区中3个部分的浮动*/
+.clear{
+    clear: both;
+}
+/* about区中的下图片区*/
+.abbottom{
+    width: 100%;
+    min-height: 800px;
+    margin-top: 80px;
+}
+.abbottom .bottomone,.abbottom .bottomtwo{
+    width: 100%;
+    overflow: hidden;
+    zoom: 1;
+    /*清除下图片区中上下2个部分的浮动，把他们自身高度撑开，另一种清除的方法*/
+}
+.abbottom .bottomimg,.abbottom .bottomword{
+    width: 25%;
+    position: relative;  /*设置相对定位是为了给button标签用来水平居中的*/
+    float: left;  /*设置浮动是为了是4个盒子排在一行*/
+    height: 400px;
+}/*它的高度塌陷该如何清除？
+是自己设置错了，宽度、高度和浮动的设置应该对盒子使用，不应该对img图片本身设置*/
+.abbottom .bottomword{
+    text-align: left;
+    background: #07cbc9;
+    font-family: "微软雅黑";
+    color: #ffffff;
+}
+/*下图片区中的图片、字体、排版设置*/
+.abbottom .bottomimg img,.abbottom .bottomword .wordcon{
+    width: 100%;
+    height: 400px;
+}
+.abbottom .bottomword .wordcon h1,.abbottom .bottomword .wordcon p{
+    padding-top: 25px;
+    padding-left: 40px;
+    /*不能使用外边距填充，否则会使父级元素的盒子产生移动，
+    用审查工具可见，一定要使用内边距填充，非常重要的细节*/
+    line-height: 1.5em;
+}
+ .abbottom .bottomword .wordcon .word1{
+    font-size: 25px;
+    font-weight: 400;
+}
+.abbottom .bottomword .wordcon .word2{
+    font-weight: 300;
+    font-size: 16px;
+}
+.abbottom .bottomword .word3{
+    font-weight: 100;
+    font-size: 14px;
+    color: lightyellow;  
+} 
+.abbottom .bottomone .bottomimg .border1,.abbottom .bottomtwo .bottomimg .border2{
+    width: 0;
+    height: 0;
+    border: 30px solid #07cbc9;
+    position: absolute;
+    /*把盒子边框设定在.abbottom .bottomimg中，成为它的子元素，
+    再用绝对定位来进行定位*/
+    top: 170px;
+}
+.abbottom .bottomone .bottomimg .border1{
+    border-color: transparent #07cbc9 transparent transparent;
+    right: 0;
+}
+.abbottom .bottomtwo .bottomimg .border2{
+    border-color: transparent  transparent transparent #07cbc9;
+}
+.abbottom .bottomword button{
+    width: 100px;
+    height: 43px;
+    background: #000;
+    color: #ffffff;
+    border: none;
+    /*这里设置绝对定位使配合父元素bottomword来产生居中妙计的，
+    应用很广泛，重要的细节，这里是水平居中*/
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 50px auto;
+}
+/*设置所有button:hover时的属性*/
+.content .about .abtop .pic .leftword button:hover,.abbottom .bottomword button:hover{
+    background: transparent;
+    border: #000 1px solid;
+ }
+ /*设置上右图片区button:hover时的属性，因为它的字体是白色，背景透明后看不见*/
+ .content .about .abtop .pic .leftword button:hover{
+    color:#000;
+ }
+  /*主题区的gallery区*/
+.content .gallery{
+    width: 1200px;
+    height: 909px;
+    /*审查工具看了高度后，多加了100px的高度才撑开（自己的方法）
+    .content .gallery .pic底部外边距无法撑开是因为父级设置了固定的高度。
+    可以给父级设置高度100%,再设置外下边距（老师的方法），不设置无法撑开高度；
+    两种方法结合在一起是：
+    先设置高度100%，用审查工具看好整体高度后，根据需求在设置固定高度，
+    但是最好是100%，方便以后添加文本内容和维护；
+    最后总结：因为直接设置底部外边距会导致.pic是相对于body的外边距，
+    .pic盒子溢出父元素，撑不开高度；主要原因是父级不设置高度100%就是撑不开的，可以自己设置两个父子盒子查看，很重要的一个细节*/
+    height: 100%;
+    margin: 0 auto;
+}
+.content .gallery .tittle{
+    text-align: center;
+    width: 550px;
+    margin: 50px auto 20px;
+    font-family: "微软雅黑";
+}
+.content .gallery .tittle h1{
+    font-size: 50px;
+    border-bottom: #07cbc9 2px 40px;
+}
+/*gallery区的tittle的盒子划线*/
+.content .gallery .tittle .line{
+    width: 40px;
+    height: 25px;
+    border-top: 2px #07cbc9 solid;
+    margin: 0 auto;
+    margin-top: 25px;
+}
+.content .gallery .tittle p{
+    color: gray;
+}
+.content .gallery .pic{
+    /*margin-top: 50px;
+    margin-bottom: 50px;*/
+    margin: 50px auto;
+    /*可以把上两行代码简化成一行*/
+    /* margin-bottom: 150px;下外边距撑不开是为什么？即使设置了外下边距，
+    通过审查工具会发现pic盒子被底部盒子掩盖，因为底部的z-index为3.
+    详情见354行.content .gallery样式设置*/
+}
+/*gallery区的图文混排区使用无序列表比使用多个盒子更加方便和规范*/
+
+ /*.content .gallery ul li{
+    list-style: none;(把li设置为块级元素后这个属性可以省略)
+    display: inline-block;
+    margin-right: 25px;
+    margin-bottom: 25px;
+    font-size: 0;
+   这里设置这个属性，img和p之间空白没了，但是审查工具能看到
+    盒子之间右边有小部分空白，为什么？
+    是因为li内联元素存在的间隙导致，这里建议给li设置为块级，并左浮动
+    方法如下：*/
+
+.content .gallery .pic ul{
+    overflow: hidden;
+    zoom: 1;
+    /*该如何是ul相对父元素居中？居中妙计好像不行
+    不建议使用绝对定位去实现水平居中。建议计算宽度并设置margin: 0 auto;即可。这种方法也是比较常用的：
+    margin: 0 30px;
+    还有就是计算li标签margin+本身宽度=1200px，如下：*/
+}
+.content .gallery ul li{
+    display: block;
+    float: left;
+    margin: 20px;
+    font-size: 0;
+}
+
+.content .gallery ul li p{
+    width: 360px;
+    height: 50px;
+    background: #000;
+    color: #ffffff;
+    font-size: 16px;
+    line-height: 50px;
+    text-indent: 1em;
+    /*这里使用盒子定位很麻烦，首行缩进非常好用，很重要的细节*/
+}

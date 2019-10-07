@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Flag-Stars</title>
+    <style type="text/css">
+      /* 此处写代码*/
+      .flag {
+        width: 600px;
+        height: 400px;
+        background: red;
+        margin: 0 auto;
+        position: relative;
+      }
+      .stars {
+        width: 0;
+        height: 0;
+        /* 用这种方法写可以控制三角形底边的长不再等于高的2倍 */
+        border-left: 55px solid transparent;
+        border-right: 55px solid transparent;
+        border-top: 40px solid yellow;
+        position: absolute;
+        top: 80px;
+        left: 50px;
+      }
+      /* 伪元素忘记了概念 */
+      .stars::before,
+      .stars::after {
+        display: block;
+        content: "";
+        width: 0;
+        height: 0;
+        border-left: 55px solid transparent;
+        border-right: 55px solid transparent;
+        border-bottom: 40px solid yellow;
+        position: absolute;
+        left: -55px;
+        top: -40px;
+        /* 先位移使他们三个重叠，再旋转角度，这样比较好控制 */
+      }
+      .stars::before {
+        transform: rotate(110deg);
+      }
+      .stars::after {
+        transform: rotate(-110deg);
+      }
+      /* translate()配合ratate（）该如何控制位移？ */
+      div .two {
+        transform: rotate(20deg) scale(0.3);
+        left: 150px;
+        top: 20px;
+      }
+      div .three {
+        transform: rotate(50deg) scale(0.3);
+        left: 180px;
+        top: 60px;
+      }
+      div .four {
+        transform: rotate(0deg) scale(0.3);
+        left: 180px;
+        top: 110px;
+      }
+      div .five {
+        transform: rotate(20deg) scale(0.3) ;
+        left: 150px;
+        top: 150px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 此处写代码 -->
+    <div class="flag">
+    <!-- 如果元素有一个属性相同，其他的属性不同，那么可以设置两个class类名，非常重要！ -->
+      <div class="stars one"></div>
+      <div class="stars two"></div>
+      <div class="stars three"></div>
+      <div class="stars four"></div>
+      <div class="stars five"></div>
+    </div>
+  </body>
+</html>

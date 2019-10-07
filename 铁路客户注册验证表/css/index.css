@@ -1,0 +1,279 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+    color: #000000;
+}
+li{
+    list-style: none;
+    
+}
+a:hover{
+    color: rgb(251, 116, 3);
+}
+.gray{
+    color: #666666;
+}
+/* 头部 */
+.header{
+    width: 100%;
+    height: 120px;
+    background-color: #efefef;
+    border-bottom: 2px solid rgb(36, 135, 201);
+}
+.header-container{
+    width: 1260px;
+    min-width: 1200px;
+    height: 120px;
+    margin: 0 auto;
+}
+.header-container-left{
+    width: 466px;
+    height: 120px;
+    float: left;
+    /* background: url('../img/logo.png') no-repeat 0 center; */
+    text-indent: 120px;
+    line-height: 120px;
+    position: relative;
+}
+
+.header-container-left-logo{
+    width: 110px;
+    height: 120px;
+    position: absolute;
+    background: url('../img/logo.png') no-repeat 0 center;
+    cursor: pointer;
+}
+/* .header-container-left-title{
+    width: 340px;
+    height: 30px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 120px;
+    margin: auto;
+    line-height: 30px;
+} */
+.header-container-left > span{
+    font-size: 24px;
+}
+.header-container-right{
+    width: 678px;
+    height: 120px;
+    float: right;
+    position: relative;
+    /* line-height: 120px; */
+    
+}
+.header-container-right-title{
+    width: 678px;
+    height: 30px;
+    position: absolute;
+    top: 50%;
+    margin-top: -15px;
+    line-height: 30px;
+}
+.header-container-right-title_border{
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 10px;
+    right: 214px;
+    /* bottom: 0; */
+    /* margin: auto; */
+    border: 10px #000000 solid;
+    border-color: #000000 transparent transparent transparent;
+}
+.header-container-right-title-select{
+    width: 160px;
+    background: #ffffff;
+    border: 1px solid rgb(251, 116, 3);
+    position: absolute;
+    top: 20px;
+    right: 154px;
+    padding: 10px 0 0 20px;
+    display: none;
+    z-index: 1;
+}
+.header-container-right-title-select > li{
+    width: 140px;
+    height: 30px;
+    font-size: 14px;
+    border-bottom: 1px dashed #000000;   
+}
+.header-container-right-title-select > li > a{
+    /* padding-left: 10px;  */
+    /* 移动距离不一定要padding，因为会把内容挤到下一行，用position: relative;也很好用*/ 
+    position: relative;
+    left: 10px;
+    color: #666666;
+}
+.header-container-right-title-select > li > a:hover{
+    color: rgb(251, 116, 3);
+}
+.header-container-right-title-select > li:nth-of-type(3n+1),
+.header-container-right-title-select > li:last-of-type
+{ 
+    border-bottom: none;
+}
+.header-container-right-title-phone{
+    width: 74px;
+    height: 30px;
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 46px;
+    background: url('../img/phone.png') no-repeat 0 center;
+    background-size: 20px 30px;
+    text-indent: 25px;
+}
+/* 主体区 */
+.content{
+    width: 1260px;
+    min-width: 1200px;
+    height: 800px;
+    float: left;
+    position: relative;
+    left: 50%;
+    margin-left: -630px;
+}
+.content-title{
+    height: 44px;
+    margin: 0;
+    line-height: 44px;
+}
+.content-container{
+    height: 632px;
+    border: 1px solid rgb(251, 116, 3);
+    border-radius: 10px;
+}
+.content-container-title{
+    height: 44px;
+    margin: 0;
+    background: rgb(251, 116, 3);
+    text-indent: 10px;
+    line-height: 44px;
+    color: #ffffff;
+    border-radius: 5px;
+}
+.content-container-loign{
+    width: 800px;
+    height: 500px;
+    margin: 0;
+    position: relative;
+    /* top: 50px; */
+    left: 200px;
+}
+.content-container-loign_reg{
+    width: 800px;
+    position: absolute;
+    top: 50px;
+}
+.content-container-loign_reg table td{
+    height: 34px;
+}
+/* 两端对齐，我已同意并遵守前面的td不要合并，其他td里面加空格 */
+.content-container-loign_reg table td:nth-of-type(2){
+    text-align-last: justify;
+}
+.content-container-loign_reg table tr td:nth-of-type(4){
+    width: 400px;
+}
+.content-container-loign_reg table tr td input{
+    width: 206px;
+    height: 17px;
+}
+.content-container-loign_reg table tr td input[class='last']{
+    width: 13px;
+    height: 13px;
+}
+.content-container-loign_reg table tr td a{
+    color: blue;
+}
+.content-container-loign_reg table tr td select{
+    width: 210px;
+    height: 23px;
+}
+.content-container-loign_reg table tr td span{
+    margin-left: 10px;
+}
+/* 特殊元素样式 */
+#hidden{
+    display: none;
+    text-indent: 86px;
+}
+.orange{
+    color: rgb(251, 116, 3);
+}
+.content-container-loign_reg table tr td a[class='orange']{
+    text-decoration: underline;
+    color: rgb(251, 116, 3);
+}
+.spanChange{
+    width: 150px;
+    height: 23px;
+}
+.spanChange div:first-of-type{
+    background: red;
+}
+.content-container-loign_reg table tr td div div{
+    width: 42px;
+    height: 7px;
+    position: relative;
+    top: 8px;
+    left: 10px;  
+    margin-right: 4px;
+    background: #dddddd;
+    float: left;
+}
+.content-container-loign_submit{
+    width: 232px;
+    height: 36px;
+    /* position: absolute;
+    top: 60px;
+    left: 410px; */
+    margin: 60px 0 0 130px;
+    border: none;
+    border-radius: 5px;
+    background: rgb(251, 116, 3);
+    text-align: center;
+    line-height: 36px;
+    color: #ffffff;
+    cursor: pointer;
+}
+.content-container-loign_submit:hover{
+    background: rgb(36, 135, 201);
+}
+.content-container-loign_namerlue{
+    width: 576px;
+    height: 300px;
+    position: absolute;
+    top: 194px;
+    right: -196px;
+    border: 1px solid rgb(36, 135, 201);
+    background: #efefef;
+    font-size: 14px;
+    z-index: 1;
+    color: #666666;
+    display: none;
+}
+.content-container-loign_namerlue p{
+    margin: 0;
+    padding: 0 14px;
+    line-height: 36px;
+}
+/* 底部 */
+.footer{
+    width: 100%;
+    height: 110px;
+    background-color: #dcdcdc;
+    float: left;
+    text-align: center;
+    border-top: 2px solid rgb(36, 135, 201);
+}
+.footer-container{
+    height: 60px;
+    margin-top: 25px;
+}

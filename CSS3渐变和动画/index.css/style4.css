@@ -1,0 +1,120 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+/* 蓝天 */
+.bluesky{
+    width: 100%;
+    height: 60vh;
+    /* vh是指窗口高度的百分比 */
+    position: relative;
+    background: linear-gradient(0deg,rgba(196, 228, 253,0.2) 10%,rgba(196, 228, 253,0.5) 40%,rgba(196, 228, 253,0.7) 60%,rgba(196, 228, 253,0.9) 80%);
+    overflow: hidden;
+}
+/* 5朵白云 */
+.bluesky > .cloud{
+    width: 100px;
+    height: 100px;
+    background: #FFFFFF;
+    position: absolute;
+    float: left;
+    border-radius: 50%;
+}
+.bluesky > .cloud::before{
+    content: "";
+    display: block;
+    width: 60px;
+    height: 90px;
+    background: #FFFFFF;
+    position: absolute;
+    top: 20px;
+    left: -30px;
+    border-radius: 50%;
+    transform: rotate(-45deg);
+}
+.bluesky > .cloud::after{
+    content: "";
+    display: block;
+    width: 160px;
+    height: 57px;
+    background: #FFFFFF;
+    position: absolute;
+    top: 36px;
+    left: -50px;
+    border-radius: 60px;
+}
+.bluesky > .cloud.one{
+    position: absolute;
+    top: 0px;
+    right: -30%;
+    transform: scale(1.2);
+    opacity: 0.6;
+    animation: translate1 6s linear 0.5s infinite normal;
+}
+.bluesky > .cloud.two{
+    position: absolute;
+    top: 15px;
+    right: -30%;
+    transform: scale(1.3);
+    opacity: 0.7;
+    animation: translate2 8s linear 0.5s infinite normal;
+}
+.bluesky > .cloud.three{
+    position: absolute;
+    top: 120px;
+    right: -30%;
+    transform: scale(1.4);
+    opacity: 0.8;
+    animation: translate3 5s linear 0.5s infinite normal;
+}
+.bluesky > .cloud.four{
+    position: absolute;
+    top: 180px;
+    right: -30%;
+    transform: scale(1);
+    opacity: 0.5;
+    animation: translate4 10s linear 0.5s infinite normal;
+}
+.bluesky > .cloud.five{
+    position: absolute;
+    top: 240px;
+    right: -30%;
+    transform: scale(1.2);
+    opacity: 0.6;
+    animation: translate5 6s linear 0.5s infinite normal;
+}
+@keyframes translate1{
+    0% {right: -30%;}
+    100% {right: 100%;}
+}
+@keyframes translate2{
+    0% {right: -30%;}
+    100% {right: 100%;}
+}
+@keyframes translate3{
+    0% {right: -30%;}
+    100% {right: 100%;}
+}
+@keyframes translate4{
+    0% {right: -30%;}
+    100% {right: 100%;}
+}
+@keyframes translate5{
+    0% {right: -30%;}
+    100% {right: 100%;}
+}
+/* 草地 */
+.ground{
+    width: 100%;
+    height: 40vh;
+    position: relative;
+    background: linear-gradient(180deg,rgba(196, 228, 253,0.2) 5%,rgba(148, 190, 89,0.3) 40%,rgba(148, 190, 89,0.5) 60%,rgba(148, 190, 89,0.7) 80%);
+}
+/* 兔子图片 */
+.ground img{
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    right: 200px;
+    bottom: 50px;
+}

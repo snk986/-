@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+
+    <title>正则表达式测试工具</title>
+
+    <style>
+        dl,dd{
+            margin: 0;
+            padding: 0;
+        }
+        /* 清除浮动 */
+        .cf{
+            zoom: 1;
+        }
+        .cf::after{
+            display: block;
+            content: '';
+            clear: both;
+        }
+        .wrap{
+            width: 1000px;
+            margin: 100px auto;
+        }
+        .title {
+            color: #777;
+            font-size: 30px;
+            text-align: center;
+        }
+        #regexp {
+            float: left;
+            width: 650px;
+            font-size: 16px;
+        }
+        #regexp>.textbox {
+            width: 638px;
+            height: 138px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 5px;
+            resize: none;
+        }
+        #regexp>.onlyread {
+            background-color: #ccc;
+        }
+        #regexp>p>.textField {
+            width: 178px;
+            padding: 5px;
+            border: 1px solid #ccc;
+        }
+        #reglist{
+            float: right;
+            width: 320px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f5f5f5;
+            padding: 20px 0;
+        }
+        #reglist dt{
+            margin-bottom: 10px;
+            text-indent: 20px;
+            color: #999;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        #reglist dd{
+            height: 40px;
+            line-height: 40px;
+            text-indent: 20px;
+        }
+        #reglist a{
+            display: block;
+            color: #08c;
+            text-decoration: none;
+        }
+        #reglist a:hover{   
+            color: #005580;
+            background-color: #eee;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="wrap cf">
+        <h1 class="title">正则表达式测试工具</h1>
+        <div id="regexp"> 
+            <textarea id="userText" class="textbox" placeholder="在此输入待匹配的文本"></textarea>
+            <p>
+                正则表达式：<input type="text" id="userRegExp" class="textField">
+                <input type="checkbox" name="userModifier" value="i">忽略大小写
+                <input type="checkbox" name="userModifier" value="g">全局匹配
+                <input type="checkbox" name="userModifier" value="m">多行匹配
+                <input type="button" id="matchingBtn" value="测试匹配">
+            </p>
+            匹配结果：
+            <div id="matchingResult" class="textbox onlyread"></div>
+            <p>
+                替换文本：<input type="text" id="userReplaceText" class="textField" placeholder="在此输入替换文本">
+                <input type="button" id="replaceBtn" value="替换">
+            </p>
+            替换结果：
+            <div id="replaceResult" class="textbox onlyread"></div>
+        </div>
+        <dl id="reglist">
+            <dt>常用正则表达式</dt>
+            <dd><a href="javascript:;" title="[\u4e00-\u9a5f]+">匹配中文字符</a></dd>
+            <dd><a href="javascript:;" title="[1-9]\d{4,}">匹配QQ字符</a></dd>
+            <dd><a href="javascript:;" title="[\u4e00-\u9fa5\w]{2,18}">匹配昵称字符</a></dd>
+            <dd><a href="javascript:;" title="\S{6,16}">匹配密码字符</a></dd>
+            <dd><a href="javascript:;" title="-([a-z])">匹配转驼峰字符</a></dd>
+            <dd><a href="javascript:;" title="<[^>]+>">匹配HTML标签</a></dd>
+            <dd><a href="javascript:;" title="(?:\w+\.)*\w+@(?:\w+\.)+[a-z]+">匹配邮箱字符</a></dd>
+        </dl>
+    </div>
+    <script type="text/javascript">
+        //获取元素对象
+        var getElem = {
+            userText: document.getElementById("userText"),
+            userRegExp: document.getElementById("userRegExp"),
+            userModifier: document.getElementsByName("userModifier"),
+            matchingBtn: document.getElementById("matchingBtn"),
+            matchingResult: document.getElementById("matchingResult"),
+            userReplaceText: document.getElementById("userReplaceText"),
+            replaceBtn: document.getElementById("replaceBtn"),
+            replaceResult: document.getElementById("replaceResult"),
+            reglists: document.getElementById("reglist").getElementsByTagName('a'),
+        }
+        //判断是否有输入内容的方法
+        var decide = {
+            IfuserText: function () {
+                if (!getElem.userText.value) {
+                    alert("请输入待匹配的文本!");
+                    getElem.userText.focus();
+                }
+            },
+            IfuserRegExp: function () {
+                if (!getElem.userRegExp.value) {
+                    alert("请输入待输入的正则!");
+                    getElem.userRegExp.focus();
+                }
+            },
+            IfuserReplaceText: function () {
+                if (!getElem.userReplaceText.value) {
+                    alert("请输入要替换成的文本!");
+                    getElem.userReplaceText.focus();
+                }
+            }
+        }
+        // 判断是否有添加igm
+        var pattern,
+            modifier = "";
+        for (var i = 0; i < getElem.userModifier.length; i++) {
+            getElem.userModifier[i].onclick = function () {
+                modifier = "";
+                for (var j = 0; j < getElem.userModifier.length; j++) {
+                    if (getElem.userModifier[j].checked) {
+                        modifier += getElem.userModifier[j].value;
+                    }
+                }
+            }
+        }
+        // 点击匹配按钮的事件
+        getElem.matchingBtn.onclick = function () {
+            decide.IfuserText();
+            decide.IfuserRegExp();
+            // "("")" 是添加()分组的意思，给下面$1引用可以在$1两边添加标签
+            pattern = new RegExp("(" + getElem.userRegExp.value + ")", modifier);
+            getElem.matchingResult.innerHTML = pattern.exec(getElem.userText.value) ? getElem.userText.value.replace(pattern, "<span style='background-color:yellow'>$1</span>") : "(没有匹配)";
+        }
+        // 点击替换按钮的事件
+        getElem.replaceBtn.onclick = function () {
+            decide.IfuserText();
+            decide.IfuserRegExp();
+            decide.IfuserReplaceText();
+            pattern = new RegExp("(" + getElem.userRegExp.value + ")", modifier);
+            getElem.replaceResult.innerHTML = getElem.userText.value.replace(pattern, "<span style='color:red'>" + getElem.userReplaceText.value + "</span>");
+        }
+        // 侧边栏正则匹配
+        for(var i = 0; i < getElem.reglists.length;i++){
+            getElem.reglists[i].onclick = function(){
+                getElem.userRegExp.value = this.title;
+            };
+        }   
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,265 @@
+/* 第一屏动画 */
+.screen-1__wrap__heading{
+    transition: all 1s;
+}
+.screen-1__wrap__subheading{
+    transition: all 1s .5s;
+}
+/* 动画属性子元素不继承 */
+.screen-1__wrap__heading_animate_init,
+.screen-1__wrap__subheading_animate_init{
+    opacity: 0;
+    transform: translate(0, 100%);
+}
+.screen-1__wrap__heading_animate_done,
+.screen-1__wrap__subheading_animate_done{
+    opacity: 1;
+    transform: translate(0,0);
+}
+
+/* 第二屏动画 rocket不见了，是JS里样式名写错了*/
+.screen-2__wrap__heading{
+    transition: all 1s;
+}
+.screen-2__wrap__border,
+.screen-2__wrap__subheading,
+.screen-2__wrap__man{
+    transition: all 1s .5s;
+}
+
+.screen-2__wrap__heading_animate_init,
+.screen-2__wrap__border_animate_init,
+.screen-2__wrap__subheading_animate_init,
+.screen-2__wrap__roket_animate_init
+{
+    opacity: 0;
+    transform: translate(0, 100%);
+}
+.screen-2__wrap__man_animate_init{
+    opacity: 0;
+}
+.screen-2__wrap__heading_animate_done,
+.screen-2__wrap__border_animate_done,
+.screen-2__wrap__subheading_animate_done
+/* ,.screen-2__wrap__roket_animate_done */
+{
+    opacity: 1;
+    transform: translate(0,0);
+}
+.screen-2__wrap__man_animate_done{
+    opacity: 1;
+}
+/* .screen-2__wrap__roket{   
+    transition: all .5s 1.5s; 
+} */
+.screen-2__wrap__roket_animate_done{
+    transition: all .5s 1.5s;
+    animation: bounceInUp 1s 1.5s;  
+    /* 过渡延迟时间和动画延迟时间要设置一致 */
+}
+
+/* 小火箭抖动动画 */
+@keyframes bounceInUp{
+    0% { 
+        opacity: 0;
+        transform: translate(0, 100%);
+    }
+    60% { 
+        opacity: 1;
+        transform: translate(0, -20px);
+    }
+    75% {
+        transform: translate(0, 10px);
+    }
+    90% {
+        transform: translate(0, -5px);
+    }
+    100% {
+        transform: translate(0, 0);
+    }
+}
+/* 第三屏动画 */
+.screen-3{
+    transition: all .5s ease-out;
+}
+.screen-3_animate_init{
+    opacity: 0;
+    background-size: 70px 80px;
+}
+.screen-3_animate_done{
+    opacity: 1;
+    background-size: 580px 640px;
+}
+/* heading没有移动的动画,是因为这里的heading后面没加',',再加上透明度为0，所以看不到移动的效果 */
+.screen-3__right__wrap__heading,
+.screen-3__right__wrap__border,
+.screen-3__right__wrap__subheading{
+    transition: all 1s;
+}
+.screen-3__right__wrap__features{
+    transition: all .5s 1s;
+}
+.screen-3__right__wrap__heading_animate_init,
+.screen-3__right__wrap__border_animate_init,
+.screen-3__right__wrap__subheading_animate_init,
+.screen-3__right__wrap__features_animate_init{
+    opacity: 0;
+    transform: translate(0, 100%);
+}
+.screen-3__right__wrap__heading_animate_done,
+.screen-3__right__wrap__border_animate_done,
+.screen-3__right__wrap__subheading_animate_done,
+.screen-3__right__wrap__features_animate_done{
+    opacity: 1;
+    transform: translate(0,0);
+}
+/* 第三屏课程的呼吸灯 如果只定义0-100%，动画完成后会瞬间变为0%，不会平滑过渡，不好看*/
+.screen-3__right__wrap__features__item{
+    -webkit-animation: breath 2s ease-in-out infinite;
+}
+@-webkit-keyframes breath {
+    0% ,100%  { transform: scale(1)   }
+    50%       { transform: scale(1.1) }
+}
+/* -webkit-是chrom兼容 */
+
+/* 第四屏动画  item不见了，因为当时js的_animate_done设置错误，只有init状态，且透明度为0*/
+.screen-4__wrap__heading{
+    transition: all 1s;
+}
+.screen-4__wrap__border,
+.screen-4__wrap__subheading{
+    transition: all 1s 1s;
+}
+.screen-4__wrap__heading_animate_init,
+.screen-4__wrap__border_animate_init,
+.screen-4__wrap__subheading_animate_init{
+    opacity: 0;
+    transform: translate(0, 100%);
+}
+.screen-4__wrap__heading_animate_done,
+.screen-4__wrap__border_animate_done,
+.screen-4__wrap__subheading_animate_done{
+    opacity: 1;
+    transform: translate(0,0);
+}
+/* .screen-4__wrap__bg{
+    transition: all 1s;
+}
+ .screen-4__wrap__bg_animate_init{
+    opacity: 0;
+}
+.screen-4__wrap__bg_animate_done{
+    opacity: 1;
+} 
+这是bg整体缩小放大的动画，下面是bg每一项缩小放大的动画 */
+ .screen-4__wrap__bg__item{
+    transition: all 1s;
+}
+/* screen-4__wrap__bg__item_animate_init所有item初始化 */
+.screen-4__wrap__bg__item_animate_init{
+    opacity: 0;
+    transform: scale(0.4);
+}    
+/* .screen-4__wrap__bg__item-1_animate_init,
+.screen-4__wrap__bg__item-2_animate_init,
+.screen-4__wrap__bg__item-3_animate_init,
+.screen-4__wrap__bg__item-4_animate_init{
+    opacity: 0;
+    transform: scale(0.4);
+}  这段可以不用要了，JS中不能省略 */
+
+.screen-4__wrap__bg__item_animate_done{
+    opacity: 1;
+    transform: scale(1);
+}
+/* 第五屏动画 */
+.screen-5__wrap__man{
+    transition: all .5s ease-out;
+}
+.screen-5__wrap__bottom__heading{
+    transition: all 1s;
+}
+.screen-5__wrap__bottom__subheading,
+.screen-5__wrap__bottom__border{
+    transition: all 1s .5s;
+}
+.screen-5__wrap__man_animate_init{
+    opacity: 0;
+    transform: scale(0.4);
+}
+.screen-5__wrap__man_animate_done{
+    opacity: 1;
+    transform: scale(1);
+}
+.screen-5__wrap__bottom__heading_animate_init,
+.screen-5__wrap__bottom__subheading_animate_init,
+.screen-5__wrap__bottom__border_animate_init{
+    opacity: 0;
+    transform: translate(0, 100%);
+}
+.screen-5__wrap__bottom__heading_animate_done,
+.screen-5__wrap__bottom__subheading_animate_done,
+.screen-5__wrap__bottom__border_animate_done{
+    opacity: 1;
+    transform: translate(0,0);
+}
+
+/* 导航栏淡入动画 */
+.head_animate_fadeInDone{
+    animation: fadeInDone 2s ;
+}
+/* fade in down意思：淡入淡出 */
+@keyframes fadeInDone{
+    0%   { 
+        opacity: 0;
+        transform:translate(0, -100%) }
+    100% { 
+        opacity: 1;
+        transform:none }
+}
+/* 导航栏_status_black动画 */
+.head{
+    transition: all 1s;    
+}
+.head_status_black{
+    background: rgba(255, 255, 255, 0.5);
+    z-index: 3;
+}
+/* _status_black特殊样式写法，加在head上，然后在CSS里写，后面跟子元素，不能在JS里写，否则只会加在第一项上 */
+.head_status_black .head__logo,
+.head_status_black .head__nav-item{
+    color: #000000;
+}
+/* 多加的样式 为什么第一项没有高亮变红色？ 解决办法：在index.css里面加.head__nav-item_status_active样式 */
+.head_status_black .head__nav-item_status_active {
+    color:  #ff0000;
+}
+
+.head_status_black .head__nav-item_custom_button{
+    color: #ffffff;
+}
+
+/* 右侧导航条_status_in动画 */
+.aside__nav{
+    transition: all 1s;
+    opacity: 0;
+    transform: translate(100%,0);
+}
+.aside__nav___status_in{
+    opacity: 1;
+    transform: translate(0,0);
+}
+
+/* 多加的样式 */
+.aside__nav__wrap-item_status_active > a{
+    color:  #ff0000;
+}
+
+/* 滑动门动画 基础样式在index中，动画效果在JS中设置*/
+.head__nav-tip{
+    transition: all 0.5s;
+}
+
+ 
+
